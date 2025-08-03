@@ -102,14 +102,21 @@ const ChartTooltip = RechartsPrimitive.Tooltip
 
 const ChartTooltipContent = React.forwardRef<
   HTMLDivElement,
-  React.ComponentProps<typeof RechartsPrimitive.Tooltip> &
-    React.ComponentProps<"div"> & {
-      hideLabel?: boolean
-      hideIndicator?: boolean
-      indicator?: "line" | "dot" | "dashed"
-      nameKey?: string
-      labelKey?: string
-    }
+  React.ComponentProps<"div"> & {
+    active?: boolean
+    payload?: any[]
+    label?: any
+    hideLabel?: boolean
+    hideIndicator?: boolean
+    indicator?: "line" | "dot" | "dashed"
+    nameKey?: string
+    labelKey?: string
+    labelFormatter?: (label: any, payload: any[]) => React.ReactNode
+    formatter?: (value: any, name: any, item: any, index: number, payload: any) => React.ReactNode
+    color?: string
+    className?: string
+    labelClassName?: string
+  }
 >(
   (
     {
@@ -126,6 +133,7 @@ const ChartTooltipContent = React.forwardRef<
       color,
       nameKey,
       labelKey,
+      ...props
     },
     ref
   ) => {
@@ -258,11 +266,12 @@ const ChartLegend = RechartsPrimitive.Legend
 
 const ChartLegendContent = React.forwardRef<
   HTMLDivElement,
-  React.ComponentProps<"div"> &
-    Pick<RechartsPrimitive.LegendProps, "payload" | "verticalAlign"> & {
-      hideIcon?: boolean
-      nameKey?: string
-    }
+  React.ComponentProps<"div"> & {
+    hideIcon?: boolean
+    nameKey?: string
+    payload?: any[]
+    verticalAlign?: "top" | "bottom"
+  }
 >(
   (
     { className, hideIcon = false, payload, verticalAlign = "bottom", nameKey },
@@ -270,7 +279,7 @@ const ChartLegendContent = React.forwardRef<
   ) => {
     const { config } = useChart()
 
-    if (!payload?.length) {
+    if (!payload || !Array.isArray(payload) || payload.length === 0) {
       return null
     }
 
@@ -283,7 +292,7 @@ const ChartLegendContent = React.forwardRef<
           className
         )}
       >
-        {payload.map((item) => {
+        {payload.map((item: any) => {
           const key = `${nameKey || item.dataKey || "value"}`
           const itemConfig = getPayloadConfigFromPayload(config, item, key)
 

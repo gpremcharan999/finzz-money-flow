@@ -2,56 +2,69 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
-All colors MUST be HSL.
-*/
+/* Finzz App Design System - Beautiful Finance Tracker */
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+    /* Core brand colors - Financial theme */
+    --background: 252 100% 99%;
+    --foreground: 240 10% 3.9%;
 
     --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
+    --card-foreground: 240 10% 3.9%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
+    --popover-foreground: 240 10% 3.9%;
 
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
+    /* Financial green theme */
+    --primary: 142 76% 36%;
+    --primary-foreground: 355 100% 97%;
+    --primary-glow: 142 76% 45%;
 
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
+    --secondary: 142 30% 96%;
+    --secondary-foreground: 142 76% 20%;
 
-    --muted: 210 40% 96.1%;
+    --muted: 210 40% 98%;
     --muted-foreground: 215.4 16.3% 46.9%;
 
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
+    --accent: 142 30% 93%;
+    --accent-foreground: 142 76% 30%;
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 210 40% 98%;
 
     --border: 214.3 31.8% 91.4%;
     --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
+    --ring: 142 76% 36%;
 
-    --radius: 0.5rem;
+    /* Income/Expense colors */
+    --success: 142 76% 36%;
+    --success-foreground: 0 0% 100%;
+    --warning: 48 96% 53%;
+    --warning-foreground: 26 83% 14%;
+    --expense: 0 84% 60%;
+    --expense-foreground: 0 0% 100%;
+
+    /* Beautiful gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(142 76% 36%), hsl(142 76% 45%));
+    --gradient-card: linear-gradient(145deg, hsl(0 0% 100%), hsl(142 30% 98%));
+    --gradient-expense: linear-gradient(135deg, hsl(0 84% 60%), hsl(0 84% 70%));
+    --gradient-income: linear-gradient(135deg, hsl(142 76% 36%), hsl(142 76% 45%));
+
+    /* Shadows */
+    --shadow-soft: 0 2px 15px -3px hsl(142 76% 36% / 0.1);
+    --shadow-card: 0 4px 20px -2px hsl(0 0% 0% / 0.08);
+    --shadow-glow: 0 0 25px hsl(142 76% 36% / 0.15);
+
+    --radius: 1rem;
 
     --sidebar-background: 0 0% 98%;
-
     --sidebar-foreground: 240 5.3% 26.1%;
-
     --sidebar-primary: 240 5.9% 10%;
-
     --sidebar-primary-foreground: 0 0% 98%;
-
     --sidebar-accent: 240 4.8% 95.9%;
-
     --sidebar-accent-foreground: 240 5.9% 10%;
-
     --sidebar-border: 220 13% 91%;
-
     --sidebar-ring: 217.2 91.2% 59.8%;
   }
 
